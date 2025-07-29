@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudyHub</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    .section-toggle { display: none; }
-    .section-toggle.active { display: block; }
-  </style>
 </head>
 <body>
   <header>
@@ -80,43 +75,6 @@
       <li>Set realistic daily goals.</li>
     </ul>
   </section>
-
-  <div class="fab">
-    <i class="fas fa-plus"></i>
-    <div class="fab-options">
-      <a href="#" class="nav-btn" data-target="notes" title="Notes"><i class="fas fa-book"></i></a>
-      <a href="#" class="nav-btn" data-target="quiz" title="Quiz"><i class="fas fa-question-circle"></i></a>
-      <a href="#" class="nav-btn" data-target="tips" title="Tips"><i class="fas fa-lightbulb"></i></a>
-    </div>
-  </div>
-
-  <script>
-    // Toggle visible section
-    const navBtns = document.querySelectorAll('.nav-btn');
-    const sections = document.querySelectorAll('.section-toggle');
-    navBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.target;
-        sections.forEach(sec => {
-          sec.classList.remove('active');
-          if (sec.id === target) {
-            sec.classList.add('active');
-          }
-        });
-      });
-    });
-
-    document.getElementById("quizForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-      const form = event.target;
-      let score = 0;
-      const total = 10;
-      const inputs = form.querySelectorAll("input[type=radio]:checked");
-      inputs.forEach(input => {
-        score += parseInt(input.value);
-      });
-      document.getElementById("quizResult").innerHTML = `<h3>You scored ${score} out of ${total}!</h3>`;
-    });
-  </script>
+  <p>This is a new paragraph added</p>
 </body>
 </html>
