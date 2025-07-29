@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .section-toggle { display: none; }
+    .section-toggle.active { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Study<span>Hub</span></h1>
+    <nav>
+      <a href="#" class="nav-btn" data-target="home">Home</a>
+      <a href="#" class="nav-btn" data-target="notes">Notes</a>
+      <a href="#" class="nav-btn" data-target="quiz">Quiz</a>
+      <a href="#" class="nav-btn" data-target="tips">Tips</a>
+    </nav>
+  </header>
+
+  <section class="slideshow section-toggle active" id="home">
+    <div class="slide-text">
+      <h2>Welcome to StudyHub</h2>
+      <p>Your all-in-one study companion!</p>
+    </div>
+    <div class="slideshow-images">
+      <div class="slide show" style="background-image: url('img1.jpg');"></div>
+      <div class="slide" style="background-image: url('img2.jpg');"></div>
+      <div class="slide" style="background-image: url('img3.jpg');"></div>
+    </div>
+  </section>
+
+  <section class="summary-section section-toggle" id="summary">
+    <h2>Get Topic Summary</h2>
+    <input type="text" placeholder="Enter a topic...">
+    <div class="summary-box">
+      <p>Summary will appear here based on predefined subjects.</p>
+    </div>
+  </section>
+
+  <section id="notes" class="notes-section section-toggle">
+    <h2>Subject-wise Notes</h2>
+    <div class="subject">
+      <h3>Math</h3>
+      <p>Algebra, Geometry, Calculus summaries and formulas.</p>
+    </div>
+    <div class="subject">
+      <h3>Science</h3>
+      <p>Photosynthesis, Newton's Laws, Cell Theory explained simply.</p>
+    </div>
+    <div class="subject">
+      <h3>History</h3>
+      <p>World War II, Renaissance, Civil Rights Movement.</p>
+    </div>
+    <div class="subject">
+      <h3>English</h3>
+      <p>Essay writing, grammar, literature notes.</p>
+    </div>
+  </section>
+
+  <section id="quiz" class="quiz-section section-toggle">
+    <h2>Quiz Generator</h2>
+    <form id="quizForm">
+      <!-- Quiz questions unchanged -->
+      <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+    <div id="quizResult" class="result-box"></div>
+  </section>
+
+  <section id="tips" class="tips-section section-toggle">
+    <h2>Study Tips</h2>
+    <ul>
+      <li>Use the Pomodoro technique to stay focused.</li>
+      <li>Revise regularly with flashcards.</li>
+      <li>Explain concepts to others to understand deeply.</li>
+      <li>Set realistic daily goals.</li>
+    </ul>
+  </section>
+
+  <div class="fab">
+    <i class="fas fa-plus"></i>
+    <div class="fab-options">
+      <a href="#" class="nav-btn" data-target="notes" title="Notes"><i class="fas fa-book"></i></a>
+      <a href="#" class="nav-btn" data-target="quiz" title="Quiz"><i class="fas fa-question-circle"></i></a>
+      <a href="#" class="nav-btn" data-target="tips" title="Tips"><i class="fas fa-lightbulb"></i></a>
+    </div>
+  </div>
+
+  <script>
+    // Toggle visible section
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const sections = document.querySelectorAll('.section-toggle');
+    navBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.target;
+        sections.forEach(sec => {
+          sec.classList.remove('active');
+          if (sec.id === target) {
+            sec.classList.add('active');
+          }
+        });
+      });
+    });
+
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const form = event.target;
+      let score = 0;
+      const total = 10;
+      const inputs = form.querySelectorAll("input[type=radio]:checked");
+      inputs.forEach(input => {
+        score += parseInt(input.value);
+      });
+      document.getElementById("quizResult").innerHTML = `<h3>You scored ${score} out of ${total}!</h3>`;
+    });
+  </script>
+</body>
+</html>
