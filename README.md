@@ -1,3 +1,3 @@
 # SweLabProject
 Software engineering lab practicals
-This is change made in pract 2
+This is change made in practical 2
